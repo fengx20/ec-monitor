@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weaver.fengx.ecmonitor.autodeploy.mapper.RollbackMapper">
+    <!--获取当前系统最新回滚版本号-->
+    <select id="getLastRollbackCode" parameterType="String" resultType="String">
+        SELECT upgradeCode AS upgradeCode FROM upgrade WHERE systemType = #{system} AND operateType = '0'
+        ORDER BY operateTime DESC limit 1
+    </select>
+
+    <!--获取当前系统最新版本号-->
+    <select id="getCurUpgradeCode" parameterType="String" resultType="String">
+        SELECT upgradeCode AS upgradeCode FROM upgrade WHERE systemType = #{system} ORDER BY operateTime DESC limit 1
+    </select>
+
+    <!--获取最新的回滚记录-->
+    <select id="getLastRollback" resultMap="RollResultMap">
+        SELECT * FROM upgrade WHERE systemType = #{system} AND operateType = '0' ORDER BY operateTime DESC limit 1
+    </select>
+
+    <resultMap id="RollResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="upgradeCode" jdbcType="VARCHAR" property="upgradeCode" />
+        <result column="upgradeDesc" jdbcType="VARCHAR" property="upgradeDesc" />
+        <result column="operateType" jdbcType="VARCHAR" property="operateType" />
+        <result column="operateTime" jdbcType="TIMESTAMP" property="operateTime" />
+        <result column="operater" jdbcType="VARCHAR" property="operater" />
+        <result column="systemType" jdbcType="VARCHAR" property="systemType" />
+        <result column="canRollback" jdbcType="VARCHAR" property="canRollback" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,20 @@
+{
+	"MonitorServerUrl":"http://192.168.1.58:8000/monitor",
+	"LogDir":"/root/weaver/monitor/agent",
+	"IP":"",
+	"Ports":"52-100:8000",
+	"ServiceNames":"",
+	"DiskPath":"/,/run",
+	"MonitorTimerCron":"*/10 * * * * ?",
+	"RotationCount":365,
+	"remark":{
+		"MonitorServerUrl":"监控服务端的httpserver地址",
+		"LogDir":"日志存放路径",
+		"IP":"如果为空则会从网卡中获取,也可以写上具体的IP地址",
+		"Ports":"需要监听的端口,格式为服务id:端口,多个端口以,号隔开",
+		"ServiceNames":"需要监听的服务名称,如果没有,保持为空即可,格式为服务id:服务名,多个服务以,号隔开",
+		"DiskPath":"需要探测使用率的磁盘路径,多个路径以,号隔开",
+		"MonitorTimerCron":"发送监控消息的定时任务配置,秒 分 时 日 月 星期",
+		"RotationCount":"日志文件保留的数量"
+	}
+}

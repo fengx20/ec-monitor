@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weaver.fengx.ecmonitor.monitor.mapper.ServiceMapper">
+
+    <select id="findService" parameterType="String" resultMap="ServiceResultMap">
+        SELECT * FROM service where 1=1
+        <if test="serviceDesc!=null and serviceDesc !=''">
+            AND service_desc LIKE CONCAT('%',#{serviceDesc},'%')
+        </if>
+        order by service_status asc,last_check_time asc
+    </select>
+
+    <select id="findServiceById" parameterType="String" resultMap="ServiceResultMap">
+        SELECT * FROM service where service_id = #{serviceId}
+    </select>
+
+    <!--新增-->
+    <insert id="addService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+      insert into service(service_id,service_desc) values (#{serviceId},#{serviceDesc})
+    </insert>
+
+    <update id="updateService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+      update service set service_desc = #{serviceDesc}
+        <if test="lastCheckTime !=null ">
+            , last_check_time = #{lastCheckTime}
+        </if>
+        <if test="serviceStatus !=null and serviceStatus!='' ">
+            , service_status = #{serviceStatus}
+        </if>
+      where service_id = #{serviceId}
+    </update>
+
+    <delete id="deleteService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+      delete from service where service_id = #{serviceId}
+    </delete>
+
+    <resultMap id="ServiceResultMap" type="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+        <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+        <result column="service_desc" jdbcType="VARCHAR" property="serviceDesc" />
+        <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />
+        <result column="service_status" jdbcType="VARCHAR" property="serviceStatus" />
+    </resultMap>
+
+
+</mapper>

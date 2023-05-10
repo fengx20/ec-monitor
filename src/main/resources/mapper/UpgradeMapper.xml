@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.weaver.fengx.ecmonitor.autodeploy.mapper.UpgradeMapper">
+    <!--新增-->
+    <insert id="addUpgrade" parameterType="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+      INSERT INTO upgrade(upgradeCode,upgradeDesc,operateType,operateTime,operater,systemType)
+      VALUES (#{upgradeCode},#{upgradeDesc},#{operateType},now(),#{operater},#{systemType})
+    </insert>
+
+    <!--获取最大(最新)的补丁编码-->
+    <select id="getMaxUpgradeCode" parameterType="String" resultType="String">
+        <!--lpad:填充，lpad(String，截取长度，左边添加的字符串) 例子：lpad(123,'4','0') -> 0123-->
+        <!--CONVERT:数据类型转换，UNSIGNED:数字类型无符号化(非负数)-->
+        SELECT lpad(MAX(CONVERT(upgradeCode,UNSIGNED))+1,'4','0') AS upgradeCode
+        FROM upgrade WHERE systemType = #{system}
+    </select>
+
+    <!--获取补丁更新列表-->
+    <select id="findUpgrades" resultMap="BaseResultMap">
+        <!--SUBDATE:给定日期减去间隔时间，SUBDATE('1998-01-02', INTERVAL 31 DAY) -> 1997-12-02-->
+        <!--interval:时间间隔，interval '3' day 时间间隔为3天-->
+        SELECT a.*,(operateTime > SUBDATE(now(),INTERVAL +#{rollbackDay} DAY)) AS canRollback
+        FROM upgrade a WHERE systemType = #{system} ORDER BY operateTime DESC
+    </select>
+
+    <!--获取补丁记录-->
+    <select id="getUpgradeByCode" resultMap="BaseResultMap">
+        SELECT a.*, (operateTime > SUBDATE(now(),INTERVAL +#{rollbackDay} DAY)) AS canRollback
+        FROM upgrade a WHERE systemType = #{system} AND operateType = '1' AND upgradeCode = #{upgradeCode}
+    </select>
+
+    <!--获取最新的更新记录-->
+    <select id="getLastUpgrade" resultMap="BaseResultMap">
+        SELECT * FROM upgrade WHERE systemType = #{system} ORDER BY operateTime DESC LIMIT 1
+    </select>
+
+    <!--获取指定id范围内的更新记录-->
+    <select id="getUpgradeByIds" resultMap="BaseResultMap">
+        SELECT * FROM upgrade WHERE systemType = #{system} AND id &gt;= #{startId} AND id &lt;= #{endId}
+                    AND operateTime > SUBDATE(now(),INTERVAL +#{rollbackDay} DAY) ORDER BY operateTime DESC
+    </select>
+
+    <resultMap id="BaseResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="upgradeCode" jdbcType="VARCHAR" property="upgradeCode" />
+        <result column="upgradeDesc" jdbcType="VARCHAR" property="upgradeDesc" />
+        <result column="operateType" jdbcType="VARCHAR" property="operateType" />
+        <result column="operateTime" jdbcType="TIMESTAMP" property="operateTime" />
+        <result column="operater" jdbcType="VARCHAR" property="operater" />
+        <result column="systemType" jdbcType="VARCHAR" property="systemType" />
+        <result column="canRollback" jdbcType="VARCHAR" property="canRollback" />
+    </resultMap>
+
+</mapper>

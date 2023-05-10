@@ -1,0 +1,50 @@
+
+# 服务端配置
+server:
+  # 内嵌Tomcat端口号
+  port: 7000
+  servlet:
+    # 编码
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    # 应用的访问路径
+    # 其中context-path: /monitor 可以不用配置
+    # 如果配置，访问路径就是http://ip:port/monitor/
+    # 没有配置，访问路径就是http://ip:port/
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+
+# Spring配置
+spring:
+  # 修改active切换读取的配置文件
+  profiles:
+    active: druid
+  # 配置项目热部署
+  devtools:
+    restart:
+      enabled: true
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 1024MB
+      # 设置总上传的文件大小
+      max-request-size: 1024MB
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/templates/
+
+# MyBatis配置
+mybatis:
+  # 指定mapper的配置文件的路径是mapper文件夹下的所有 xml文件
+  mapper-locations: classpath:mapper/*.xml
