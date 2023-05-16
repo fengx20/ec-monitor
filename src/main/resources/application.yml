@@ -1,41 +1,41 @@
 
-# ·şÎñ¶ËÅäÖÃ
+# æœåŠ¡ç«¯é…ç½®
 server:
-  # ÄÚÇ¶Tomcat¶Ë¿ÚºÅ
+  # å†…åµŒTomcatç«¯å£å·
   port: 7000
   servlet:
-    # ±àÂë
+    # ç¼–ç 
     encoding:
       charset: UTF-8
       enabled: true
       force: true
-    # Ó¦ÓÃµÄ·ÃÎÊÂ·¾¶
-    # ÆäÖĞcontext-path: /monitor ¿ÉÒÔ²»ÓÃÅäÖÃ
-    # Èç¹ûÅäÖÃ£¬·ÃÎÊÂ·¾¶¾ÍÊÇhttp://ip:port/monitor/
-    # Ã»ÓĞÅäÖÃ£¬·ÃÎÊÂ·¾¶¾ÍÊÇhttp://ip:port/
+    # åº”ç”¨çš„è®¿é—®è·¯å¾„
+    # å…¶ä¸­context-path: /monitor å¯ä»¥ä¸ç”¨é…ç½®
+    # å¦‚æœé…ç½®ï¼Œè®¿é—®è·¯å¾„å°±æ˜¯http://ip:port/monitor/
+    # æ²¡æœ‰é…ç½®ï¼Œè®¿é—®è·¯å¾„å°±æ˜¯http://ip:port/
     context-path: /
   tomcat:
     uri-encoding: UTF-8
 
-# SpringÅäÖÃ
+# Springé…ç½®
 spring:
-  # ĞŞ¸ÄactiveÇĞ»»¶ÁÈ¡µÄÅäÖÃÎÄ¼ş
+  # ä¿®æ”¹activeåˆ‡æ¢è¯»å–çš„é…ç½®æ–‡ä»¶
   profiles:
     active: druid
-  # ÅäÖÃÏîÄ¿ÈÈ²¿Êğ
+  # é…ç½®é¡¹ç›®çƒ­éƒ¨ç½²
   devtools:
     restart:
       enabled: true
-  # ×ÊÔ´ĞÅÏ¢
+  # èµ„æºä¿¡æ¯
   messages:
-    # ¹ú¼Ê»¯×ÊÔ´ÎÄ¼şÂ·¾¶
+    # å›½é™…åŒ–èµ„æºæ–‡ä»¶è·¯å¾„
     basename: i18n/messages
-  # ÎÄ¼şÉÏ´«
+  # æ–‡ä»¶ä¸Šä¼ 
   servlet:
     multipart:
-      # µ¥¸öÎÄ¼ş´óĞ¡
+      # å•ä¸ªæ–‡ä»¶å¤§å°
       max-file-size: 1024MB
-      # ÉèÖÃ×ÜÉÏ´«µÄÎÄ¼ş´óĞ¡
+      # è®¾ç½®æ€»ä¸Šä¼ çš„æ–‡ä»¶å¤§å°
       max-request-size: 1024MB
   thymeleaf:
     prefix: classpath:/templates/
@@ -44,7 +44,18 @@ spring:
     resources:
       static-locations: classpath:/static/,classpath:/templates/
 
-# MyBatisÅäÖÃ
+# MyBatisé…ç½®
 mybatis:
-  # Ö¸¶¨mapperµÄÅäÖÃÎÄ¼şµÄÂ·¾¶ÊÇmapperÎÄ¼ş¼ĞÏÂµÄËùÓĞ xmlÎÄ¼ş
+  # æŒ‡å®šmapperçš„é…ç½®æ–‡ä»¶çš„è·¯å¾„æ˜¯mapperæ–‡ä»¶å¤¹ä¸‹çš„æ‰€æœ‰ xmlæ–‡ä»¶
   mapper-locations: classpath:mapper/*.xml
+
+# Nettyé…ç½®
+netty:
+  # é…ç½®å¯åŠ¨ç«¯å£
+  port: 8011
+#  boss: 4
+#  worker: 2
+#  timeout: 6000
+#  #å¤šç«¯å£ç»‘å®š
+#  portSalve: 9001
+#  host: 127.0.0.1

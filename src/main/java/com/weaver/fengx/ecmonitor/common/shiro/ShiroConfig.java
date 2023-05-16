@@ -18,6 +18,7 @@ public class ShiroConfig {
 
     /**
      * 首先需要提供一个Realm的实例。
+     *
      * @return
      */
     @Bean
@@ -27,6 +28,7 @@ public class ShiroConfig {
 
     /**
      * 需要配置一个SecurityManager，在SecurityManager中配置Realm。
+     *
      * @return
      */
     @Bean
@@ -40,6 +42,7 @@ public class ShiroConfig {
      * 配置一个ShiroFilterFactoryBean，在ShiroFilterFactoryBean中指定路径拦截规则等
      * Shiro自带的一个Filter工厂实例，所有的认证和授权判断都是由这个bean生成的Filter对象来完成的，
      * Shiro框架的运行机制，开发者只需要定义规则，进行配置，具体的执行者全部由Shiro自己创建的Filter来完成
+     *
      * @param securityManager
      * @return
      */

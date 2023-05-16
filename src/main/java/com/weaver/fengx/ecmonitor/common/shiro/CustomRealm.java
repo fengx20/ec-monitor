@@ -17,6 +17,7 @@ import java.util.Set;
  * 自定义核心组件Realm，开发者自定义的模块，根据项目的需求，验证和授权的逻辑在Realm中实现，
  * 继承抽象类AuthorizingRealm，实现两个抽象方法分别完成授权和认证的逻辑
  */
+
 /**
  * @author Fengx
  * 自定义核心组件Realm
@@ -29,6 +30,7 @@ public class CustomRealm extends AuthorizingRealm {
     /**
      * 认证
      * AuthenticationInfo用户的角色信息集合，认证时使用
+     *
      * @param authenticationToken
      * @return
      * @throws AuthenticationException
@@ -40,14 +42,14 @@ public class CustomRealm extends AuthorizingRealm {
         UserModel userModel;
         if ("".equals(loginid)) {
             throw new AccountException("用户名不能为空");
-        }else if("".equals(userPwd)){
+        } else if ("".equals(userPwd)) {
             throw new AccountException("密码不能为空");
-        }else{
+        } else {
             // 验证
             userModel = userService.findUserByLoginId(loginid);
-            if(userModel == null){
+            if (userModel == null) {
                 throw new AccountException("账号不存在");
-            }else if(!userModel.getPasswd().equals(DigestUtils.md5DigestAsHex(userPwd.getBytes()))){
+            } else if (!userModel.getPasswd().equals(DigestUtils.md5DigestAsHex(userPwd.getBytes()))) {
                 throw new AccountException("密码不正确");
             }
         }
@@ -57,6 +59,7 @@ public class CustomRealm extends AuthorizingRealm {
     /**
      * 授权
      * AuthorizationInfo角色的权限信息集合，授权时使用
+     *
      * @param principalCollection
      * @return
      */
