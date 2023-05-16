@@ -3,7 +3,7 @@
 
 <mapper namespace="com.weaver.fengx.ecmonitor.autodeploy.mapper.UpgradeMapper">
     <!--新增-->
-    <insert id="addUpgrade" parameterType="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+    <insert id="addUpgrade" parameterType="com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel">
       INSERT INTO upgrade(upgradeCode,upgradeDesc,operateType,operateTime,operater,systemType)
       VALUES (#{upgradeCode},#{upgradeDesc},#{operateType},now(),#{operater},#{systemType})
     </insert>
@@ -41,7 +41,7 @@
                     AND operateTime > SUBDATE(now(),INTERVAL +#{rollbackDay} DAY) ORDER BY operateTime DESC
     </select>
 
-    <resultMap id="BaseResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+    <resultMap id="BaseResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="upgradeCode" jdbcType="VARCHAR" property="upgradeCode" />
         <result column="upgradeDesc" jdbcType="VARCHAR" property="upgradeDesc" />

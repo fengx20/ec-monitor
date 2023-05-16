@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.monitor.mapper;
 
-import com.weaver.fengx.ecmonitor.monitor.model.ServiceModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

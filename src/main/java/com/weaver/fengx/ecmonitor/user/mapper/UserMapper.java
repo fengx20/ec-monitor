@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.user.mapper;
 
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

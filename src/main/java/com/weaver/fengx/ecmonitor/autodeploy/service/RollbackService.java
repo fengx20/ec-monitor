@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.autodeploy.service;
 
-import com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel;
+import com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel;
 
 /**
  * @author Fengx

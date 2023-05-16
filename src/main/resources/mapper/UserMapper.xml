@@ -13,11 +13,11 @@
     </select>
 
     <!--根据id更新用户密码-->
-    <update id="updatePasswd" parameterType="com.weaver.fengx.ecmonitor.user.model.UserModel">
+    <update id="updatePasswd" parameterType="com.weaver.fengx.ecmonitor.user.entity.UserModel">
         update user set passwd = #{passwd} where id = #{id}
     </update>
 
-    <resultMap id="UserResultMap" type="com.weaver.fengx.ecmonitor.user.model.UserModel">
+    <resultMap id="UserResultMap" type="com.weaver.fengx.ecmonitor.user.entity.UserModel">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="loginid" jdbcType="VARCHAR" property="loginid" />
         <result column="passwd" jdbcType="VARCHAR" property="passwd" />

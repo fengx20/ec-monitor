@@ -1,7 +1,7 @@
 package com.weaver.fengx.ecmonitor.user.service.impl;
 
 import com.weaver.fengx.ecmonitor.user.mapper.UserMapper;
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 import com.weaver.fengx.ecmonitor.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

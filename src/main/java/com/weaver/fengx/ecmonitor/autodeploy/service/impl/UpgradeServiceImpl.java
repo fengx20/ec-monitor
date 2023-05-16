@@ -2,7 +2,7 @@ package com.weaver.fengx.ecmonitor.autodeploy.service.impl;
 
 import com.weaver.fengx.ecmonitor.autodeploy.constant.GlobalConstant;
 import com.weaver.fengx.ecmonitor.autodeploy.mapper.UpgradeMapper;
-import com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel;
+import com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel;
 import com.weaver.fengx.ecmonitor.autodeploy.service.UpgradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

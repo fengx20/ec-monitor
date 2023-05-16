@@ -1,4 +1,4 @@
-package com.weaver.fengx.ecmonitor.autodeploy.model;
+package com.weaver.fengx.ecmonitor.autodeploy.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

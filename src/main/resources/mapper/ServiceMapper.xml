@@ -15,11 +15,11 @@
     </select>
 
     <!--新增-->
-    <insert id="addService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+    <insert id="addService" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel">
       insert into service(service_id,service_desc) values (#{serviceId},#{serviceDesc})
     </insert>
 
-    <update id="updateService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+    <update id="updateService" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel">
       update service set service_desc = #{serviceDesc}
         <if test="lastCheckTime !=null ">
             , last_check_time = #{lastCheckTime}
@@ -30,11 +30,11 @@
       where service_id = #{serviceId}
     </update>
 
-    <delete id="deleteService" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+    <delete id="deleteService" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel">
       delete from service where service_id = #{serviceId}
     </delete>
 
-    <resultMap id="ServiceResultMap" type="com.weaver.fengx.ecmonitor.monitor.model.ServiceModel">
+    <resultMap id="ServiceResultMap" type="com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel">
         <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
         <result column="service_desc" jdbcType="VARCHAR" property="serviceDesc" />
         <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />

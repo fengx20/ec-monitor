@@ -18,7 +18,7 @@
         SELECT * FROM upgrade WHERE systemType = #{system} AND operateType = '0' ORDER BY operateTime DESC limit 1
     </select>
 
-    <resultMap id="RollResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.model.UpgradeModel">
+    <resultMap id="RollResultMap" type="com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="upgradeCode" jdbcType="VARCHAR" property="upgradeCode" />
         <result column="upgradeDesc" jdbcType="VARCHAR" property="upgradeDesc" />

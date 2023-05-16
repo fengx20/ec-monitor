@@ -15,11 +15,11 @@
     </select>
 
     <!--新增-->
-    <insert id="addServer" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServerModel">
+    <insert id="addServer" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServerModel">
       insert into server(server_ip,server_desc) values (#{serverIp},#{serverDesc})
     </insert>
 
-    <update id="updateServer" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServerModel">
+    <update id="updateServer" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServerModel">
       update server set server_desc = #{serverDesc}
         <if test="lastCheckTime !=null ">
             , last_check_time = #{lastCheckTime}
@@ -36,11 +36,11 @@
       where server_ip = #{serverIp}
     </update>
 
-    <delete id="deleteServer" parameterType="com.weaver.fengx.ecmonitor.monitor.model.ServerModel">
+    <delete id="deleteServer" parameterType="com.weaver.fengx.ecmonitor.monitor.entity.ServerModel">
       delete from server where server_ip = #{serverIp}
     </delete>
 
-    <resultMap id="ServerResultMap" type="com.weaver.fengx.ecmonitor.monitor.model.ServerModel">
+    <resultMap id="ServerResultMap" type="com.weaver.fengx.ecmonitor.monitor.entity.ServerModel">
         <result column="server_ip" jdbcType="VARCHAR" property="serverIp" />
         <result column="server_desc" jdbcType="VARCHAR" property="serverDesc" />
         <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />

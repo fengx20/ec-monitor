@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.user.service;
 
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 
 /**
  * @author Fengx

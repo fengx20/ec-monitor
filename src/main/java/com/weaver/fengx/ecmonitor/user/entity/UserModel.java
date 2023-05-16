@@ -1,4 +1,4 @@
-package com.weaver.fengx.ecmonitor.user.model;
+package com.weaver.fengx.ecmonitor.user.entity;
 
 import java.io.Serializable;
 

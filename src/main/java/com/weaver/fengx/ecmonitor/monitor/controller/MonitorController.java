@@ -1,8 +1,8 @@
 package com.weaver.fengx.ecmonitor.monitor.controller;
 
 import com.weaver.fengx.ecmonitor.common.result.AjaxResult;
-import com.weaver.fengx.ecmonitor.monitor.model.ServerModel;
-import com.weaver.fengx.ecmonitor.monitor.model.ServiceModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServerModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel;
 import com.weaver.fengx.ecmonitor.monitor.service.ServerService;
 import com.weaver.fengx.ecmonitor.monitor.service.ServiceService;
 import org.springframework.beans.factory.annotation.Autowired;

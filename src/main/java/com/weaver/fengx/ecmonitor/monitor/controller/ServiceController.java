@@ -1,10 +1,10 @@
 package com.weaver.fengx.ecmonitor.monitor.controller;
 
 import com.weaver.fengx.ecmonitor.common.result.AjaxResult;
-import com.weaver.fengx.ecmonitor.monitor.model.ServiceModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel;
 import com.weaver.fengx.ecmonitor.monitor.properties.CommonProperties;
 import com.weaver.fengx.ecmonitor.monitor.service.ServiceService;
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;

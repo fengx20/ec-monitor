@@ -1,7 +1,7 @@
 package com.weaver.fengx.ecmonitor.user.controller;
 
 import com.weaver.fengx.ecmonitor.common.result.AjaxResult;
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 import com.weaver.fengx.ecmonitor.user.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;

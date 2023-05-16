@@ -1,4 +1,4 @@
-package com.weaver.fengx.ecmonitor.monitor.model;
+package com.weaver.fengx.ecmonitor.monitor.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

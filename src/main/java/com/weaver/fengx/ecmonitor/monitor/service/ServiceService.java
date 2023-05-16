@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.monitor.service;
 
-import com.weaver.fengx.ecmonitor.monitor.model.ServiceModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServiceModel;
 
 import java.util.List;
 

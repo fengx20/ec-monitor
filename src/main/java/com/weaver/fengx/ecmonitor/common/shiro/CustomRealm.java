@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.common.shiro;
 
-import com.weaver.fengx.ecmonitor.user.model.UserModel;
+import com.weaver.fengx.ecmonitor.user.entity.UserModel;
 import com.weaver.fengx.ecmonitor.user.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

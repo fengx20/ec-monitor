@@ -1,7 +1,7 @@
 package com.weaver.fengx.ecmonitor.monitor.service.impl;
 
 import com.weaver.fengx.ecmonitor.monitor.mapper.ServerMapper;
-import com.weaver.fengx.ecmonitor.monitor.model.ServerModel;
+import com.weaver.fengx.ecmonitor.monitor.entity.ServerModel;
 import com.weaver.fengx.ecmonitor.monitor.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
