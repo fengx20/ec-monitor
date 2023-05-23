@@ -1,6 +1,7 @@
 package com.weaver.fengx.ecmonitor.user.controller;
 
 import com.weaver.fengx.ecmonitor.common.result.AjaxResult;
+import com.weaver.fengx.ecmonitor.common.result.ResultMsgEnum;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -31,6 +32,7 @@ public class LoginController {
         loginid = loginid.trim();
         password = password.trim();
         // 从SecurityUtils里边创建一个subject，Shiro的一个抽象概念，包含了用户信息
+        // Subject: 为认证主体。应用代码直接交互的对象是Subject,Subject代表了当前的用户。包含Principals和Credentials两个信息。
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
         UsernamePasswordToken token = new UsernamePasswordToken(loginid, password);
@@ -58,6 +60,16 @@ public class LoginController {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
         return AjaxResult.success();
+    }
+
+    /**
+     * 未授权
+     *
+     * @return
+     */
+    @GetMapping("/noauth")
+    public AjaxResult<String> unauthorized() {
+        return AjaxResult.error(ResultMsgEnum.UNAUTHORIZED.getMessage());
     }
 
 }

@@ -23,6 +23,7 @@
         <result column="passwd" jdbcType="VARCHAR" property="passwd" />
         <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="role" jdbcType="VARCHAR" property="roles" />
+        <result column="perms" jdbcType="VARCHAR" property="perms"/>
     </resultMap>
 
 </mapper>

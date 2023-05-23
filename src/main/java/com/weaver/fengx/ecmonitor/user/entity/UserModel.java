@@ -30,6 +30,10 @@ public class UserModel implements Serializable {
      * 角色
      */
     private String roles;
+    /**
+     * 权限
+     */
+    private String perms;
 
     public Integer getId() {
         return id;
@@ -69,5 +73,13 @@ public class UserModel implements Serializable {
 
     public void setRoles(String roles) {
         this.roles = roles;
+    }
+
+    public String getPerms() {
+        return perms;
+    }
+
+    public void setPerms(String perms) {
+        this.perms = perms;
     }
 }
