@@ -23,3 +23,9 @@ if [ $count -ne 0 ]; then # 文件个数不等于0开始进入条件
 else
   echo "this direction is null" # 如果没有文件，给出提示
 fi
+
+# 执行服务停止
+sh stop.sh
+
+# 执行服务启动
+sh start.sh
