@@ -2,6 +2,7 @@ package com.weaver.fengx.ecmonitor.common.netty.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
@@ -20,13 +21,15 @@ import io.netty.util.CharsetUtil;
  * 用户事件：由用户触发的各种非常规事件，根据evt的类型来判断不同的事件类型，从而进行不同的处理。
  * 可写状态变更：收到消息后，要回复消息，会先把回复内容写到缓冲区。而缓冲区大小是有一定限制的，当达到上限以后，可写状态就会变为否，不能再写。等缓冲区的内容被冲刷掉后，缓冲区又有了空间，可写状态又会变为是。
  */
+// 为了线程安全
+@ChannelHandler.Sharable
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * 与服务器建立连接
      * 激活客户端并发送消息
      *
-     * @param ctx
+     * @param ctx ChannelHandlerContext，通道上下文，代指Channel
      * @throws Exception
      */
     @Override

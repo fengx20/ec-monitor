@@ -22,6 +22,7 @@ public class NettyServer {
          * 4、bossGroup 和 workerGroup 含有的子线程(NioEventLoop)的个数
          * 默认实际 cpu核数 * 2
          */
+        // Netty的Reactor线程池，初始化了一个NioEventLoop数组，用来处理I/O操作,如接受新的连接和读/写数据
         EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup work = new NioEventLoopGroup();
 
@@ -46,9 +47,11 @@ public class NettyServer {
                         }
                     });
             System.out.println("服务器准备好了");
+            // 绑定服务器，该实例将提供有关IO操作的结果或状态的信息
             // 绑定一个端口并且同步，生成了一个 ChannelFuture 对象
             // 启动服务器(并绑定端口)
             ChannelFuture sync = serverBootstrap.bind(6668).sync();
+            System.out.println("在" + sync.channel().localAddress() + "上开启监听");
 
             // 注册监听器，监控关心的事件
             sync.addListener(new ChannelFutureListener() {
@@ -62,7 +65,7 @@ public class NettyServer {
                 }
             });
 
-            // 对关闭通道进行监听
+            // 阻塞操作，closeFuture()开启了一个channel的监听器（这期间channel在进行各项工作），直到链路断开
             sync.channel().closeFuture().sync();
         } finally {
             // 优雅关闭

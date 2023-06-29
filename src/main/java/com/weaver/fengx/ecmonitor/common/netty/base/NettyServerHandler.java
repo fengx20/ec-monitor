@@ -2,6 +2,7 @@ package com.weaver.fengx.ecmonitor.common.netty.base;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
@@ -10,6 +11,7 @@ import io.netty.util.CharsetUtil;
  * @author Fengx
  * 自定义服务端处理器
  **/
+@ChannelHandler.Sharable
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     /**

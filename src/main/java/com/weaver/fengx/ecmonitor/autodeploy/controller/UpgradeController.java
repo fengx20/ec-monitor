@@ -222,11 +222,14 @@ public class UpgradeController {
         try {
             // ProcessBuilder类是J2SE 1.5在java.lang中新添加的一个新类，
             // 此类用于创建操作系统进程，它提供一种启动和管理进程（也就是应用程序）的方法。在J2SE 1.5之前，都是由Process类处来实现进程的控制管理。
+            // ProcessBuilder(shellPath, upgradeCode); 利用指定的操作系统程序和参数构造一个进程生成器。
             ProcessBuilder pb = new ProcessBuilder(shellPath, upgradeCode);
             // 每个 ProcessBuilder 实例管理一个进程属性集。
             // 它的start()方法利用这些属性创建一个新的Process 实例。start() 方法可以从同一实例重复调用，以利用相同的或相关的属性创建新的子进程。
+            // start()方法返回Process的一个实例
             Process p = pb.start();
 
+            // 捕获调用输出信息，对输入流进行缓冲
             // BufferedReader:从字符输入流中读取文本并缓冲字符，以便有效地读取字符，数组和行
             // InputStreamReader类是从字节流到字符流的桥接器：它使用指定的字符集读取字节并将它们解码为字符
             BufferedReader stdInout = new BufferedReader(new InputStreamReader(p.getInputStream()));
