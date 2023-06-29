@@ -35,6 +35,19 @@ public class UserModel implements Serializable {
      */
     private String perms;
 
+    public UserModel() {
+
+    }
+
+    public UserModel(Integer id, String loginid, String passwd, String userName, String roles, String perms) {
+        this.id = id;
+        this.loginid = loginid;
+        this.passwd = passwd;
+        this.userName = userName;
+        this.roles = roles;
+        this.perms = perms;
+    }
+
     public Integer getId() {
         return id;
     }
