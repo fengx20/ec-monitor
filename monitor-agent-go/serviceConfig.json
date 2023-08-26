@@ -2,7 +2,7 @@
   "MonitorServerUrl": "http://192.168.1.58:8000/monitor",
   "LogDir": "/root/weaver/monitor/agent",
   "IP": "",
-  "Ports": "52-100:8000",
+  "Ports": "52-100:8000,52-101:8001",
   "ServiceNames": "",
   "DiskPath": "/,/run",
   "MonitorTimerCron": "*/10 * * * * ?（每10秒执行一次）",

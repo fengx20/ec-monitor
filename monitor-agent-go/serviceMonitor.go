@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/robfig/cron"
+	"log"
+
 	// 获取各种系统和硬件信息
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/disk"
@@ -15,21 +18,23 @@ import (
 	"net/http"
 )
 
-// 获取CPU使用率
+// GetCpuPercent 获取CPU使用率
 func GetCpuPercent() string {
+	// CPU使用率，每3秒刷新一次
 	percent, _ := cpu.Percent(3*time.Second, false)
+	// 格式化字符串，浮点数
 	cpuRate := fmt.Sprintf("%.2f", percent[0])
 	return cpuRate
 }
 
-// 获取内存使用率
+// GetMemPercent 获取内存使用率
 func GetMemPercent() string {
 	memInfo, _ := mem.VirtualMemory()
 	memRate := fmt.Sprintf("%.2f", memInfo.UsedPercent)
 	return memRate
 }
 
-// 获取磁盘空间使用率
+// GetDiskPercent 获取磁盘空间使用率
 func GetDiskPercent() string {
 	resultStr := ""
 	if serviceConfig.DiskPath != "" {
@@ -46,7 +51,7 @@ func GetDiskPercent() string {
 	return resultStr
 }
 
-// 获取本地ip
+// GetLocalIp 获取本地ip
 func GetLocalIp() string {
 	if serviceConfig.IP == "" {
 		addrs, err := net.InterfaceAddrs()
@@ -64,7 +69,7 @@ func GetLocalIp() string {
 	return ""
 }
 
-// 获取端口的状态
+// GetPortStatus 获取端口的状态
 func GetPortStatus() string {
 	resultStr := "#"
 	if serviceConfig.Ports != "" {
@@ -98,7 +103,7 @@ func GetPortStatus() string {
 	return resultStr
 }
 
-// 获取服务状态
+// GetServiceStatus 获取服务状态
 func GetServiceStatus() string {
 	resultStr := "#"
 	if serviceConfig.ServiceNames != "" {
@@ -134,19 +139,19 @@ func sendMonitor(serverInfo string) {
 	}
 }
 
-//func main() {
-//    // 精确到秒
-//	tarCron := cron.New(cron.WithSeconds())
-//	// 定时任务发送http请求获取补丁包
-//	tarCron.AddFunc(serviceConfig.MonitorTimerCron, func() {
-//		serverInfo := "ip:"+GetLocalIp()+";cpu:"+GetCpuPercent()+";mem:"+GetMemPercent()+";disk:"+GetDiskPercent();
-//		serverInfo += GetPortStatus()
-//		serverInfo += GetServiceStatus()
-//		sendMonitor(serverInfo)
-//		log.Info(serverInfo)
-//	})
-//	tarCron.Start()
-//	log.Info("monitor agent已启动")
-//	// 阻塞主线程停止
-//	select {}
-//}
+func main() {
+	// 精确到秒
+	tarCron := cron.New(cron.WithSeconds())
+	// 定时任务发送http请求获取补丁包
+	tarCron.AddFunc(serviceConfig.MonitorTimerCron, func() {
+		serverInfo := "ip:" + GetLocalIp() + ";cpu:" + GetCpuPercent() + ";mem:" + GetMemPercent() + ";disk:" + GetDiskPercent()
+		serverInfo += GetPortStatus()
+		serverInfo += GetServiceStatus()
+		sendMonitor(serverInfo)
+		log.Print(serverInfo)
+	})
+	tarCron.Start()
+	log.Print("monitor agent已启动")
+	// 阻塞主线程停止
+	select {}
+}

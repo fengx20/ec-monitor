@@ -15,27 +15,36 @@ import (
 	"os/exec"
 )
 
-// 配置文件的对象
+// ServiceConfig 配置文件的对象
 // 一个结构体（struct）就是一组字段（field）
 type ServiceConfig struct {
+	// 监控服务端的httpserver地址
 	MonitorServerUrl string
+	// 发送监控消息的定时任务配置,秒 分 时 日 月 星期
 	MonitorTimerCron string
-	Ports            string
-	ServiceNames     string
-	LogDir           string
-	RotationCount    uint
-	IP               string
-	DiskPath         string
+	// 需要监听的端口,格式为服务id:端口,多个端口以,号隔开
+	Ports string
+	// 需要监听的服务名称,如果没有,保持为空即可,格式为服务id:服务名,多个服务以,号隔开"
+	ServiceNames string
+	// 日志存放路径
+	LogDir string
+	// 日志文件保留的数量
+	RotationCount uint
+	// 如果为空则会从网卡中获取,也可以写上具体的IP地址
+	IP string
+	// 需要探测使用率的磁盘路径,多个路径以,号隔开
+	DiskPath string
 }
 
 type JsonStruct struct {
 }
 
 // 结构体赋值
+// var 语句用于声明一个变量列表，跟函数的参数列表一样，类型在最后。
 var serviceConfig = ServiceConfig{}
 
+// 初始化
 func init() {
-
 	// 读取文件监控配置文件
 	// 简洁赋值语句 := 可在类型明确的地方代替 var 声明，不能在函数外使用
 	// JsonParse 指向 JsonStruct 结构体
@@ -74,7 +83,7 @@ func init() {
 	//})
 }
 
-// Go 拥有指针。指针保存了值的内存地址
+// NewJsonStruct Go 拥有指针。指针保存了值的内存地址
 // 类型 *T 是指向 T 类型值的指针。其零值为 nil。
 // * 操作符表示指针指向的底层值。
 func NewJsonStruct() *JsonStruct {
@@ -100,7 +109,7 @@ func (jst *JsonStruct) Load(filename string, v interface{}) {
 
 }
 
-// 函数可以返回任意数量的返回值。
+// PathExists 函数可以返回任意数量的返回值。
 // 判断对应path是否存在
 func PathExists(path string) (bool, error) {
 	_, err := os.Stat(path)
