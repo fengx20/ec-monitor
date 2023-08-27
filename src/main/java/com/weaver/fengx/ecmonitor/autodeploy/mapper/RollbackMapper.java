@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.autodeploy.mapper;
 
-import com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel;
+import com.weaver.fengx.ecmonitor.autodeploy.domain.entity.UpgradeModel;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -12,6 +12,7 @@ public interface RollbackMapper {
 
     /**
      * 获取当前系统最新回滚版本号
+     *
      * @param system
      * @return
      */
@@ -19,6 +20,7 @@ public interface RollbackMapper {
 
     /**
      * 获取当前系统最大版本号
+     *
      * @param system
      * @return
      */
@@ -26,6 +28,7 @@ public interface RollbackMapper {
 
     /**
      * 获取最新的回滚记录
+     *
      * @param system
      * @return
      */

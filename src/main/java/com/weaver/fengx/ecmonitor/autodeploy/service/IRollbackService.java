@@ -1,12 +1,12 @@
 package com.weaver.fengx.ecmonitor.autodeploy.service;
 
-import com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel;
+import com.weaver.fengx.ecmonitor.autodeploy.domain.entity.UpgradeModel;
 
 /**
  * @author Fengx
  * 回滚服务
  **/
-public interface RollbackService {
+public interface IRollbackService {
 
     /**
      * 获取当前系统最大版本号

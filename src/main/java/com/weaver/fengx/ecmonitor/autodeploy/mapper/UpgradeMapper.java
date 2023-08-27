@@ -1,6 +1,6 @@
 package com.weaver.fengx.ecmonitor.autodeploy.mapper;
 
-import com.weaver.fengx.ecmonitor.autodeploy.entity.UpgradeModel;
+import com.weaver.fengx.ecmonitor.autodeploy.domain.entity.UpgradeModel;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,6 +14,7 @@ public interface UpgradeMapper {
 
     /**
      * 新增更新记录
+     *
      * @param upgrade
      * @return
      */
@@ -21,6 +22,7 @@ public interface UpgradeMapper {
 
     /**
      * 获取指定环境下最大的补丁编号
+     *
      * @param system
      * @return
      */
@@ -28,7 +30,8 @@ public interface UpgradeMapper {
 
     /**
      * 查询指定环境更新记录
-     * @param system 环境
+     *
+     * @param system      环境
      * @param rollbackDay 天数
      * @return
      */
@@ -36,6 +39,7 @@ public interface UpgradeMapper {
 
     /**
      * 获取最新的更新记录
+     *
      * @param system
      * @return
      */
@@ -43,6 +47,7 @@ public interface UpgradeMapper {
 
     /**
      * 获取指定id范围内的更新记录
+     *
      * @param system
      * @param startId
      * @param endId
@@ -53,6 +58,7 @@ public interface UpgradeMapper {
 
     /**
      * 获取补丁记录
+     *
      * @param system
      * @param upgradeCode
      * @param rollbackDay
